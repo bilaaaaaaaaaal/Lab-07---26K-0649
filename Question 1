@@ -1,0 +1,47 @@
+#include <stdio.h>
+int main(){
+    int seats[10][4];
+    int resamount,resrow,rescol,booked=0,fullybooked=0;
+    for(int i=0;i<10;i++){
+        for(int j=0;j<4;j++){
+            seats[i][j]=0;
+        }
+    }
+    printf("how many seats would you like to reserve?\n");
+    scanf("%d",&resamount);
+    for(int k=0;k<resamount;k++){
+        while(booked==0)
+        {
+            printf("what row would you like your seat in?(1-10)\n");
+            scanf("%d",&resrow);
+            printf("what column would you like your seat in?(1-4)\n");
+            scanf("%d",&rescol);
+                if(rescol<=4 && rescol>=1 && resrow<=10 && resrow>=1){
+                    if(seats[resrow-1][rescol-1] == 0){
+                        seats[resrow-1][rescol-1]=1;
+                       booked=1;
+                    }
+                    else{
+                     printf("seat already booked\n");
+                    }
+                }
+                else{
+                    printf("invalid row or column\n");
+                }
+        }
+        booked=0;
+    }
+    for(int i=0;i<10;i++){
+        printf("%d. ",i+1);
+        for(int j=0;j<4;j++){
+            printf("%d",seats[i][j]);
+        }
+        printf("\n");
+    }
+    for(int i=0;i<10;i++){
+        if (seats[i][0]==1 && seats[i][1]==1 && seats[i][2]==1 && seats[i][3]==1){
+            fullybooked++;
+        }
+    }
+    printf("number of fully booked rows: %d",fullybooked);
+}
