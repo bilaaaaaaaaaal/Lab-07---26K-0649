@@ -1,0 +1,63 @@
+#include <stdio.h>
+int main(){
+    int marks[2][3][3];
+    int enteredmarks,totalmarks1[3]={0,0,0},totalmarks2[3]={0,0,0};
+    for(int class=0;class<2;class++){
+        for(int student=0;student<3;student++){
+            for(int subject=0;subject<3;subject++){
+                printf("enter marks of student %d of class %d for subject %d",student+1,class+1,subject+1);
+                scanf("%d",&enteredmarks);
+                marks[class][student][subject]=enteredmarks;
+            }
+        }
+    }
+
+    for(int student=0;student<3;student++){
+        for(int class=0;class<2;class++){
+            for(int subject=0;subject<3;subject++){
+                if(student==0 && class==0){
+                    totalmarks1[0]+=marks[class][student][subject];
+                }
+                if(student==1 && class==0){
+                    totalmarks1[1]+=marks[class][student][subject];
+                }
+                if(student==2 && class==0){
+                    totalmarks1[2]+=marks[class][student][subject];
+                }
+                if(student==0 && class==1){
+                    totalmarks2[0]+=marks[class][student][subject];
+                }
+                if(student==1 && class==1){
+                    totalmarks2[1]+=marks[class][student][subject];
+                }
+                if(student==2 && class==1){
+                    totalmarks2[2]+=marks[class][student][subject];
+                }
+            }
+        }
+    }
+    printf("total marks\nclass 1\nstudent 1:%d student 2:%d student 3:%d\nclass 2\nstudent 1:%d student 2:%d student 3:%d",totalmarks1[0],totalmarks1[1],totalmarks1[2],totalmarks2[0],totalmarks2[1],totalmarks2[2]);
+    int class1max = totalmarks1[0];
+    int class2max = totalmarks2[0];
+    int index1=1,index2=1;
+    for(int i=0;i<3;i++){
+        if(totalmarks1[i]>class1max){
+            class1max=totalmarks1[i];
+            index1=i+1;
+        }
+        if(totalmarks2[i]>class2max){
+            class2max=totalmarks2[i];
+            index2=i+1;
+        }
+    }
+    printf("topper of class 1:%d\ntopper of class 2:%d",index1,index2);
+    int topper,topclass;
+    if(class1max>class2max){
+        topper=index1;
+    }
+    else{
+        topper=index2;
+    }
+    printf("overall topper is:%d",topper);
+    printf("top performer of class 1: student %d with %d marks\n top performer of class 2: student %d with %d",index1,class1max,index2,class2max);
+}
