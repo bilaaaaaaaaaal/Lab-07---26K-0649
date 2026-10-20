@@ -1,0 +1,44 @@
+#include <stdio.h>
+int main(){
+    int datamatrix[3][3];
+    int keymatrix[3][3];
+    int encryptedmatrix[3][3];
+    int input;
+    for(int x=0;x<3;x++){
+        for(int y=0;y<3;y++){
+            printf("enter a number into row %d column %d (data matrix)",x,y);
+            scanf("%d",&input);
+            datamatrix[x][y]=input;
+        }
+    }
+    for(int x=0;x<3;x++){
+        for(int y=0;y<3;y++){
+            printf("enter a number into row %d column %d (key matrix)",x,y);
+            scanf("%d",&input);
+            keymatrix[x][y]=input;
+        }
+    }
+    for(int x=0;x<3;x++){
+        for(int y=0;y<3;y++){
+            encryptedmatrix[x][y]=(datamatrix[x][y]*keymatrix[x][y])+(x+y);
+        }
+    }
+    for(int x=0;x<3;x++){
+        for(int y=0;y<3;y++){
+            printf("%d ",encryptedmatrix[x][y]);
+        }
+        printf("\n");
+    }
+    int max=encryptedmatrix[0][0];
+    int row=0,column=0;
+    for(int x=0;x<3;x++){
+        for(int y=0;y<3;y++){
+            if(encryptedmatrix[x][y]>max){
+                max=encryptedmatrix[x][y];
+                row=x;
+                column=y;
+            }
+        }
+    }
+    printf("greatest value in the encrypted matrix is %d at the location x:%d y:%d",max,row+1,column+1);
+}
