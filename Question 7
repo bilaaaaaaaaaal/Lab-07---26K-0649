@@ -1,0 +1,31 @@
+#include <stdio.h>
+int main() {
+    printf("triangular pattern\n");
+    for (int i = 1; i <= 5; i++) {
+        for (int j = 1; j <= i; j++) {
+            printf("%d ", j);
+        }
+        printf("\n");
+    }
+    printf("reversed triangular pattern\n");
+    for (int i = 5; i >= 1; i--) {
+        for (int j = 1; j <= i; j++) {
+            printf("%d ", j);
+        }
+        printf("\n");
+    }
+    printf("multiplication pattern\n");
+    for (int i = 1; i <= 5; i++) {
+        for (int j = 1; j <= i; j++) {
+            printf("%d ", i * j);
+        }
+        printf("\n");
+    }
+    printf("reverse multiplication pattern\n");
+    for (int i = 5; i >= 1; i--) {
+        for (int j = 1; j <= i; j++) {
+            printf("%d ", i * j);
+        }
+        printf("\n");
+    }
+}
