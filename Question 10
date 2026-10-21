@@ -1,0 +1,41 @@
+#include <stdio.h>
+int main(){
+    int classes,students,subjects,pass=1;
+    float marks,studenttotal=0,studentavg,classtotal=0,classavg,schooltotal=0,schoolavg;
+    printf("enter the number of classes\n");
+    scanf("%d",&classes);
+    for(int i=1;i<=classes;i++){
+        printf("enter the amount of students in class %d\n",i);
+        scanf("%d",&students);
+        for(int j=1;j<=students;j++){
+            printf("enter the amount of subjects student %d studies\n",j);
+            scanf("%d",&subjects);
+            for(int k=1;k<=subjects;k++){
+                printf("enter marks of subject %d\n",k);
+                scanf("%f",&marks);
+                if (marks<40){
+                    pass=0;
+                }
+                studenttotal+=marks;
+            }
+            studentavg=studenttotal/subjects;
+            if(pass==1){
+                printf("Class %d, Student %d: Total marks = %.0f, Average = %.02f, Result = Pass\n",i,j,studenttotal,studentavg);
+            }
+            else{
+                printf("Class %d, Student %d: Total marks = %.0f, Average = %.02f, Result = Fail\n",i,j,studenttotal,studentavg);
+            }
+            pass=1;
+            classtotal+=studenttotal;
+            studenttotal=0;
+        }
+        classavg=classtotal/students;
+        printf("\n");
+        printf("\nClass %d total is %.0f and average is %.02f\n",i,classtotal,classavg);
+        schooltotal+=classtotal;
+        classtotal=0;
+    }
+    schoolavg=schooltotal/classes;
+    printf("\n");
+    printf("\nSchool total is %.0f and average is %.02f",schooltotal,schoolavg);
+}
