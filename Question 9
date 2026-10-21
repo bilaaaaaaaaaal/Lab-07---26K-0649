@@ -1,0 +1,25 @@
+#include <stdio.h>
+int main(){
+    int departments,employees,days;
+    float salary,depttotal,overalltotal=0;
+    printf("enter the amount of departments\n");
+    scanf("%d",&departments);
+    for(int i=1;i<=departments;i++){
+        printf("enter the amount of employees in department %d\n",i);
+        scanf("%d",&employees);
+        depttotal=0;
+        for(int j=1;j<=employees;j++){
+            printf("how many days did employee %d work?\n",j);
+            scanf("%d",&days);
+            salary=days*500;
+            if(days>25){
+                salary+=2000;
+            }
+            depttotal+=salary;
+            printf("Department %d, Employee %d: Days worked = %d, Salary = Rs.%f\n",i,j,days,salary);
+        }
+        printf("\nTotal department %d payment = %f\n",i,depttotal);
+        overalltotal+=depttotal;
+    }
+    printf("Overall total payment = %f",overalltotal);
+}
